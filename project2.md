@@ -11,7 +11,7 @@ Fork & Clone this repo.
 - [ ] In this space below, list **THREE** ideas for your Project 2. For each idea, include [user stories](https://www.atlassian.com/agile/project-management/user-stories) for each idea and a link to the API(s) you want to use for it.
 
 --------------------------------------------------------
-1. "Conspiracy Theorist" - a gameafied news application where you can search recent news stories and build out your own wacky theroies, then share with the rest of the site to vote on most plausible. 
+1. "Conspiracy Theorist" - a gameafied news application where you can search recent news stories and build out your own wacky theroies, then share with the rest of the site to vote on most plausible. https://gnews.io/docs/v4?javascript#introduction
 
 2. Some kind of carbon impact conversation calculator - enter in how you get to work, what you eat, what kind of residence you live in. Provides friendly suggestions on what you could do to reduce your impact. 
 
