@@ -11,14 +11,7 @@ Fork & Clone this repo.
 - [ ] In this space below, list **THREE** ideas for your Project 2. For each idea, include [user stories](https://www.atlassian.com/agile/project-management/user-stories) for each idea and a link to the API(s) you want to use for it.
 
 --------------------------------------------------------
-1. World wide air quality index and weather web application - (if possible combine wildfire warnings) 
-User Story #1: As a user I want to be able to search for different cities and display different pieces of weather and air quality preferences, so that I have one quick place to look for what I need.
-User Story #2: As a user I want to be able to toggle on/off certain preferences for each city I choose to track. 
-User Story #3: As a user I want all of my tracked cities to be displayed on a dashboard that lets me know what I need to at a glance. 
-API resource: 
-https://www.iqair.com/air-pollution-data-api - Air quality index API
-https://docs.openaq.org/docs - Separate Air quality index API
-https://weatherstack.com/documentation - good looking weather API documentation
+1. "Conspiracy Theorist" - a gameafied news application where you can search recent news stories and build out your own wacky theroies, then share with the rest of the site to vote on most plausible. 
 
 2. Some kind of carbon impact conversation calculator - enter in how you get to work, what you eat, what kind of residence you live in. Provides friendly suggestions on what you could do to reduce your impact. 
 
@@ -40,10 +33,13 @@ In the space below:
 
 ----------------------------------------------------------
 ### ERD
-
+![alt text](https://ibb.co/XbqtVQp)
 ----------------------------------------------------------
 ### User Stories
-
+1. As a user, I want to search recent news stories happing in the world, by topic, so that I save the stories to create my own theories
+2. As a user, I want to be able create write descriptions for my different theories and deside which ones to post with the community
+3. As the collective users, we want the ability to rate other's theories on a common board to find out which ones is most feasible
+4. As a user, I want to see my news favorites on of my dashboard so that I can track new stories I'm intersted in
 ----------------------------------------------------------
 ### Wireframes
 
