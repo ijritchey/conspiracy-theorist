@@ -33,7 +33,9 @@ In the space below:
 
 ----------------------------------------------------------
 ### ERD
-![alt text](https://ibb.co/XbqtVQp)
+
+![Conspiracy Theorist ERD drawio (1)](https://user-images.githubusercontent.com/39060344/190321429-da3b82ef-fe07-4a99-a225-2c50a1c31594.png)
+
 ----------------------------------------------------------
 ### User Stories
 1. As a user, I want to search recent news stories happing in the world, by topic, so that I save the stories to create my own theories
