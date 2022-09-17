@@ -44,7 +44,8 @@ In the space below:
 4. As a user, I want to see my news favorites on of my dashboard so that I can track new stories I'm intersted in
 ----------------------------------------------------------
 ### Wireframes
-
+(WIP)
+![Conspiracy Theorist Wireframe drawio](https://user-images.githubusercontent.com/39060344/190871385-978a8a4e-b124-4712-99cc-68f63bf6cce3.png)
 ----------------------------------------------------------
 
 Make a PR when you're done!
