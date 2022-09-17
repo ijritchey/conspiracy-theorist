@@ -1,0 +1,15 @@
+<h2>Homepage</h2>
+
+<h3>Current News Articles</h3> 
+
+
+<% articles.forEach(a => { %>
+<div class="well">
+    <h2>
+    <p><%= a.title %></p>
+    <p><%= a.description %> </p>
+    <p><%= a.content %> </p>
+</div>
+<% }) %>
+  
+   

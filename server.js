@@ -6,9 +6,13 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('./config/ppConfig')
 const isLoggedIn = require('./middleware/isLoggedIn');
+const axios = require('axios');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
-console.log('Yoooo this the secret:',SECRET_SESSION);
+console.log('Yoooo this the secret:', SECRET_SESSION);
+const API_TOKEN = process.env.API_TOKEN;
+console.log('This is the api-token:', API_TOKEN)
+
 
 
 app.set('view engine', 'ejs');
@@ -38,16 +42,24 @@ app.use((req, res, next) => {
   next();
 });
 
+// testing axios get request
+
+
 app.get('/', (req, res) => {
-  res.render('index');
-})
+
+  axios.get(`https://gnews.io/api/v4/search?q=example&token=${API_TOKEN}`)
+    .then(articles => {
+      console.log(articles.data);
+      res.render('main/index', {articles: articles});
+    }).catch()
+});
 
 // access to all of the auth routes
 app.use('/auth', require('./controllers/auth'));
 
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
-  const { id, name, email } = req.user.get(); 
+  const { id, name, email } = req.user.get();
   res.render('profile', { id, name, email });
 });
 
