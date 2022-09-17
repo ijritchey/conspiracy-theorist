@@ -48,10 +48,14 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
 
   axios.get(`https://gnews.io/api/v4/search?q=example&token=${API_TOKEN}`)
-    .then(articles => {
-      console.log(articles.data);
-      res.render('main/index', {articles: articles});
-    }).catch()
+    .then(response => {
+      // console.log(articles.data.title);
+      res.send(response.data);
+      res.render('main/index', { articles: response.data });
+    }).catch((error) => {
+      console.log(error)
+      res.status(400).render('main/404')
+    });
 });
 
 // access to all of the auth routes
