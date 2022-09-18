@@ -9,9 +9,9 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
-console.log('Yoooo this the secret:', SECRET_SESSION);
+// console.log('Yoooo this the secret:', SECRET_SESSION);
 const API_TOKEN = process.env.API_TOKEN;
-console.log('This is the api-token:', API_TOKEN)
+// console.log('This is the api-token:', API_TOKEN)
 
 
 
@@ -49,9 +49,8 @@ app.get('/', (req, res) => {
 
   axios.get(`https://gnews.io/api/v4/search?q=example&token=${API_TOKEN}`)
     .then(response => {
-      // console.log(articles.data.title);
-      res.send(response.data);
-      res.render('main/index', { articles: response.data });
+      // console.log(response.data.articles);
+      res.render('main/index', { articles: response.data.articles });
     }).catch((error) => {
       console.log(error)
       res.status(400).render('main/404')

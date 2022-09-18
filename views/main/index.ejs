@@ -6,17 +6,14 @@
 
 
 
-<% articles.forEach(a=> { %>
+<% articles.forEach(a => { %>
     <div class="well">
-        <h2>
+        <h2><%= a.title %></h2>
             <p>
-                <%= a.title %>
+                Article Description: <%= a.description %>
             </p>
             <p>
-                <%= a.description %>
-            </p>
-            <p>
-                <%= a.content %>
+                Article Content: <%= a.content %>
             </p>
     </div>
     <% }) %>
