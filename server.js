@@ -9,7 +9,7 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
-// console.log('Yoooo this the secret:', SECRET_SESSION);
+console.log('Yoooo this the secret:', SECRET_SESSION);
 const API_TOKEN = process.env.API_TOKEN;
 // console.log('This is the api-token:', API_TOKEN)
 
@@ -59,6 +59,8 @@ app.get('/', (req, res) => {
 
 // access to all of the auth routes
 app.use('/auth', require('./controllers/auth'));
+app.use('/conspiracy', require('./controllers/conspiracy'))
+
 
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {

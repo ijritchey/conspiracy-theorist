@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('user_conciracies', {
+    await queryInterface.createTable('user_conspiracies', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,7 +11,7 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      name: {
+      title: {
         type: Sequelize.STRING
       },
       description: {
@@ -20,8 +20,8 @@ module.exports = {
       rating: {
         type: Sequelize.INTEGER
       },
-      rating: {
-        type: Sequelize.INTEGER
+      isLive: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -34,6 +34,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('user_conciracies');
+    await queryInterface.dropTable('user_conspiracies');
   }
 };

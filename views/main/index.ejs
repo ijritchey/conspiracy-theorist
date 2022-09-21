@@ -1,19 +1,35 @@
-<h2>Homepage</h2>
+<h1>Homepage</h1>
 
 <h3>Current News Articles</h3>
 
-<% console.log(articles) %>
 
 
+<div class="row">
+    <div class="col-sm-8">
+        <div class="row">
+            <div class="col-xs-12">
+                <img class="hero"
+                    src="">
+            </div>
+        </div>
+        <h1>Latest Posts from BlogPulse</h1>
 
-<% articles.forEach(a => { %>
-    <div class="well">
-        <h2><%= a.title %></h2>
-            <p>
-                Article Description: <%= a.description %>
-            </p>
-            <p>
-                Article Content: <%= a.content %>
-            </p>
+        <% articles.forEach((a => { %>
+            <div class="well">
+                <h2>
+                    <p><%= a.title %></p>
+                    <small>by <%= a.description %></small>
+                </h2>
+                <p>
+                    <%= a.content %> 
+                </p>
+            </div>
+            <% })); %>
+
     </div>
-    <% }) %>
+    <div class="col-sm-4">
+        <h2>About</h2>
+        <h4>Are you curious? Do world events happen by chance or is there a bigger conspiracy behind it all?</h4>
+        <p>Your goal is to "do your own research" and locate the next big conspiracy happening somewehre in the world.</p>
+    </div>
+</div>
