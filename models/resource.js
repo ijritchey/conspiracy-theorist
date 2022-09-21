@@ -3,17 +3,17 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class news_resource extends Model {
+  class resource extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.news_resource.belongsTo(models.user_conspiracy)
+      models.resource.belongsTo(models.conspiracy)   
     }
   }
-  news_resource.init({
+  resource.init({
     conspiracyId: DataTypes.INTEGER,
     title: DataTypes.STRING,
     description: DataTypes.STRING,
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     sourceUrl: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'news_resource',
+    modelName: 'resource',
   });
-  return news_resource;
+  return resource;
 };

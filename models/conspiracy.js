@@ -3,18 +3,18 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class user_conspiracy extends Model {
+  class conspiracy extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.user_conspiracy.belongsTo(models.user)
-      models.user_conspiracy.hasMany(models.news_resource)
+      models.conspiracy.belongsTo(models.user)
+      models.conspiracy.hasMany(models.resource)
     }
   }
-  user_conspiracy.init({
+  conspiracy.init({
     userId: DataTypes.INTEGER,
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     isLive: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: 'user_conspiracy',
+    modelName: 'conspiracy',
   });
-  return user_conspiracy;
+  return conspiracy;
 };

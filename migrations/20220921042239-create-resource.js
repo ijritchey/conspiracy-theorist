@@ -1,27 +1,39 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('user_conspiracies', {
+    await queryInterface.createTable('resources', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
+      conspiracyId: {
         type: Sequelize.INTEGER
       },
       title: {
         type: Sequelize.STRING
       },
       description: {
+        type: Sequelize.STRING
+      },
+      content: {
         type: Sequelize.TEXT
       },
-      rating: {
-        type: Sequelize.INTEGER
+      url: {
+        type: Sequelize.STRING
       },
-      isLive: {
-        type: Sequelize.BOOLEAN
+      img: {
+        type: Sequelize.STRING
+      },
+      published: {
+        type: Sequelize.DATE
+      },
+      sourceName: {
+        type: Sequelize.STRING
+      },
+      sourceUrl: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -34,6 +46,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('user_conspiracies');
+    await queryInterface.dropTable('resources');
   }
 };

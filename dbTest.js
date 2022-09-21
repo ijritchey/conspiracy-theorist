@@ -7,15 +7,55 @@ async function createUser() {
     try {
         const newUser = await db.user.create({
             name: "My Name",
-            email: "myemail@gmail.com"
+            email: "myemail@gmail.com",
+            password: "greeneggsandham"
         });
         console.log('my new user >>>', newUser);
     } catch (error) {
         console.log('new user was not created b/c of >>>', error);
     }
-    
-}
+
+};
 // @todo run createUser function below
+// createUser();
+
+// create conspiracy
+async function createConspiracy() {
+    try {
+        const newConspiracy = await db.conspiracy.create({
+            userId: 1,
+            title: "This is a title",
+            description: "bunch of random nonesense just for show",
+            rating: 10,
+            isLive: true
+        });
+        console.log('my new user >>>', newConspiracy);
+    } catch (error) {
+        console.log('new user was not created b/c of >>>', error);
+    }
+};
+// createConspiracy();
+
+// create news resource
+async function createNews() {
+    try {
+        const newNews = await db.resource.create({
+            conspiracyId: 1,
+            title: "Important conspiracy",
+            description: "super cool description",
+            content: "bunch of random information",
+            url: "url here",
+            img: "image url here",
+            published: "2022-9-20",
+            sourceName: "name of source",
+            sourceUrl: "source url"
+        });
+        console.log('my new user >>>', newNews);
+    } catch (error) {
+        console.log('new user was not created b/c of >>>', error);
+    }
+};
+createNews();
 
 // READ
 // find one user
@@ -24,7 +64,7 @@ async function findOneUser() {
         const user = await db.user.findOne({
             where: { id: 1 }
         });
-        console.log('current user here >>>', user);  
+        console.log('current user here >>>', user);
     } catch (error) {
         console.log('did not find user b/c of >>>', error);
     }
@@ -35,7 +75,7 @@ async function findOneUser() {
 async function findAllUsers() {
     try {
         const users = await db.user.findAll();
-        console.log('all users here >>>', users);  
+        console.log('all users here >>>', users);
     } catch (error) {
         console.log('did not find all users because of >>>', error);
     }
@@ -51,7 +91,7 @@ async function findOrCreate() {
                 name: 'Brian Smith',
             },
         });
-        console.log('all users here >>>', users);  
+        console.log('all users here >>>', users);
     } catch (error) {
         console.log('did not find all users because of >>>', error);
     }
