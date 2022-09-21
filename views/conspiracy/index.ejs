@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-sm-8">
+        <div class="row">
+            <div class="col-xs-12">
+                <img class="hero"
+                    src="">
+            </div>
+        </div>
+        <h2>Top Conspiracies!</h2>
+
+        <% conspiracies.forEach((c => { %>
+            <div class="well">
+                <h2>
+                    <p><%= c.title %></p>
+                    <small>by <%= c.description %></small>
+                </h2>
+                <p>
+                    Rating:<%= c.rating %> 
+                </p>
+            </div>
+            <% })); %>
+
+    </div>
+</div>
