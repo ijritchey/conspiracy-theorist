@@ -4,30 +4,42 @@
     <div class="col-sm-8">
         <div class="row">
             <div class="col-xs-12">
-                <img class="hero"
-                    src="">
+                <img class="hero" src="">
             </div>
         </div>
         <h2>Latest World News Stories</h2>
 
-        <% articles.forEach((a => { %>
+        <% articles.forEach((a=> { %>
             <div class="well">
                 <h2>
-                    <p><%= a.title %></p>
-                    <small>Description: <%= a.description %></small>
+                    <%= a.title %>
                 </h2>
-                <p>
-                    Content: <%= a.content %> 
-                </p>
+                <p>Description: <%= a.description %></p>
+                <small>
+                    Content: <%= a.content %>
+                </small>
                 <% if (!currentUser) {%>
                     <p>Login to start adding news articles to your Conspiracies</p>
-                  <% } else { %>
-                    <form action="/send" method="POST">
-                        <input type="button" name="newID" placeholder="Button" hidden>
-
-                        <button>Pin</button>
-                    </form>
-                  <% } %>
+                    <% } else { %>
+                        <form action="/news" method="POST">
+                            <label for="conspiracy">Conspiracy</label>
+                            <select name="conspiracyId" class="form-control" required>
+                                <% conspiracies.forEach(function(conspiracy) { %>
+                                  <option value="<%= conspiracy.id %>"><%= conspiracy.title %></option>
+                                <% }) %>
+                              </select>
+                            <!-- logic for new post route -->
+                            <input type="text" name="title" hidden>
+                            <input type="text" name="description" hidden>
+                            <input type="text" name="content" hidden>
+                            <input type="text" name="url" hidden>
+                            <input type="text" name="img" hidden>
+                            <input type="text" name="published" hidden>
+                            <input type="text" name="sourceName" hidden>
+                            <input type="text" name="sourceUrl" hidden>
+                            <button type="submit">Pin</button>
+                        </form>
+                        <% } %>
             </div>
             <% })); %>
 
@@ -35,6 +47,7 @@
     <div class="col-sm-4">
         <h2>About</h2>
         <h4>Are you curious? Do world events happen by chance or is there a bigger conspiracy behind it all?</h4>
-        <p>Your goal is to "do your own research" and locate the next big conspiracy happening somewehre in the world.</p>
+        <p>Your goal is to "do your own research" and locate the next big conspiracy happening somewehre in the world.
+        </p>
     </div>
 </div>

@@ -46,12 +46,17 @@ app.use((req, res, next) => {
 // testing axios get request
 
 
-app.get('/', (req, res) => {
-
+app.get('/', async (req, res) => {
   axios.get(`https://gnews.io/api/v4/search?q=example&token=${API_TOKEN}`)
-    .then(response => {
+    .then(async response => {
+      let conspiracies;
+      if (req.user) {
+        conspiracies = await db.conspiracy.findAll({
+          where: { userId: req.user.id}
+        })
+      }
       // console.log(response.data.articles);
-      res.render('main/index', { articles: response.data.articles });
+      res.render('main/index', { articles: response.data.articles, conspiracies });
     }).catch((error) => {
       console.log(error)
       res.status(400).render('main/404')
