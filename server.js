@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const passport = require('./config/ppConfig')
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
+const db = require('./models');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log('Yoooo this the secret:', SECRET_SESSION);
@@ -65,6 +66,8 @@ app.use('/conspiracy', require('./controllers/conspiracy'))
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
+
+ 
   res.render('profile', { id, name, email });
 });
 

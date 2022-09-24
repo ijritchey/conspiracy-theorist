@@ -13,11 +13,24 @@ router.get('/', (req, res) => {
     }))
 });
 
+router.get('/show', (req, res) => {
+    db.conspiracy.findAll({
+        include: [db.user],
+        where: {userId: currentUser.userId}
+    })
+    .then((conspiracy) => {
+        res.render('conspiracy/show', {conspiracies: conspiracy})
+    })
+    .catch((error => {
+        res.status(400).render('main/404')
+    }))
+});
+
 
 // conspiracy post route
 router.post('/', (req, res) => {
     db.conspiracy.create({
-        userId: 1,
+        userId: req.body.userId,
         title: req.body.title,
         description: req.body.description,
         rating: 0,

@@ -14,11 +14,20 @@
             <div class="well">
                 <h2>
                     <p><%= a.title %></p>
-                    <small>by <%= a.description %></small>
+                    <small>Description: <%= a.description %></small>
                 </h2>
                 <p>
-                    <%= a.content %> 
+                    Content: <%= a.content %> 
                 </p>
+                <% if (!currentUser) {%>
+                    <p>Login to start adding news articles to your Conspiracies</p>
+                  <% } else { %>
+                    <form action="/send" method="POST">
+                        <input type="button" name="newID" placeholder="Button" hidden>
+
+                        <button>Pin</button>
+                    </form>
+                  <% } %>
             </div>
             <% })); %>
 
