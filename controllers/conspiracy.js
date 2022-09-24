@@ -35,10 +35,9 @@ router.get('/new', (req, res) => {
     res.render('conspiracy/new')
 });
 
-
-router.get('/:id', (req, res) => {
+router.get('/list/:id', (req, res) => {
     db.conspiracy.findAll({
-        include: [db.user],
+        include: [db.user, db.resource],
         where: { userId: req.params.id }
     })
         .then((conspiracy) => {
@@ -49,6 +48,8 @@ router.get('/:id', (req, res) => {
             res.status(400).render('main/404')
         }))
 });
+
+
 
 
 module.exports = router

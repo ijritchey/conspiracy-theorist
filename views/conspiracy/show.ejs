@@ -1,20 +1,19 @@
 <h1>Your Conspiracies</h1>
 
-<% if(currentUser) { %>
-    <% conspiracies.forEach((c) => { %>
-      <div class="well">
-        <h3>
-          <%=  c.title %> 
-        </h3>
-        <p>
-            <%= c.description %> 
-        </p>
-        <p>
-            <%= c.rating %> 
-        </p>
-      </div>
+<% if(currentUser.userId===conspiracies.userId) { %>
+  <% conspiracies.forEach((c)=> { %>
+    <div class="well">
+      <h3>
+        <%= c.title %>
+      </h3>
+      <p>
+        <%= c.description %>
+      </p>
+      <p>
+        <%= c.rating %>
+      </p>
+    </div>
     <% }) %>
-  <% } else { %>
-    <h3>No articles yet!</h3>
-  <% } %>
-  
+      <% } else { %>
+        <h3>No conspiracies yet!</h3>
+     <% } %>

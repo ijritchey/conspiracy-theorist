@@ -8,6 +8,7 @@ const passport = require('./config/ppConfig')
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
 const db = require('./models');
+const methodOverride = require('method-override')
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log('Yoooo this the secret:', SECRET_SESSION);
@@ -22,6 +23,7 @@ app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
+app.use(methodOverride('_method'))
 
 app.use(session({
   secret: SECRET_SESSION,    // What we actually will be giving the user on our site as a session cookie
@@ -65,7 +67,8 @@ app.get('/', async (req, res) => {
 
 // access to all of the auth routes
 app.use('/auth', require('./controllers/auth'));
-app.use('/conspiracy', require('./controllers/conspiracy'))
+app.use('/conspiracy', require('./controllers/conspiracy'));
+app.use('/news', require('./controllers/news'))
 
 
 // Add this above /auth controllers
