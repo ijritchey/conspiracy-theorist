@@ -4,12 +4,12 @@ const db = require('../models');
 
 
 
-router.post('/', (req, res) => {
-    db.resource.create({
+router.post('/', async (req, res) => {
+    const newResource = await db.resource.create({
         conspiracyId: req.body.conspiracyId,
         title: req.body.title,
         description: req.body.description,
-        content: req.body.contnet,
+        content: req.body.content,
         url: req.body.url,
         img: req.body.img,
         published: req.body.published,

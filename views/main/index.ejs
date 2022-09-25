@@ -25,16 +25,23 @@
                     </button>
                     <% } else { %>
                         <form action="/news" method="POST">
-                            
+
                             <label for="conspiracy">Conspiracy</label>
                             <select name="conspiracyId" class="form-control" required>
-                                <% conspiracies.forEach((conspiracy) => { %>
+                                <% conspiracies.forEach((conspiracy)=> { %>
                                     <option value="<%= conspiracy.id %>">
                                         <%= conspiracy.title %>
                                     </option>
                                     <% }) %>
                             </select>
                             <input type="text" name="title" value="<%= a.title %>  " hidden>
+                            
+
+                            <input type="text" name="url" value="<%= a.url %> " hidden>
+                            <input type="text" name="img" value="<%= a.image %> " hidden>
+                            
+                            <input type="text" name="sourceName" value="<%= a.source.name %> " hidden>
+                            <input type="text" name="sourceUrl" value="<%= a.source.url %> " hidden>
                             <button type="submit">Pin</button>
                         </form>
                         <% } %>
