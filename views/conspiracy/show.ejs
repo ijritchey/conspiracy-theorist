@@ -13,7 +13,11 @@
         <%= c.rating %>
       </p>
     </div>
+    <form method="POST" action="/conspiracy/<%= c.id %>/?_method=DELETE">
+      <a type="button" class="btn btn-sm btn-outline-secondary" href="/conspiracy/<%= c.id %>">Views</a>
+      <button type="submit" type="button" class="btn btn-sm btn-outline-secondary">Remove</button>
+    </form>
     <% }) %>
       <% } else { %>
         <h3>No conspiracies yet!</h3>
-     <% } %>
+        <% } %>

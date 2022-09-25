@@ -13,6 +13,9 @@ router.get('/', (req, res) => {
         }))
 });
 
+router.get('/new', (req, res) => {
+    res.render('conspiracy/new')
+});
 
 // conspiracy post route
 router.post('/', (req, res) => {
@@ -29,10 +32,16 @@ router.post('/', (req, res) => {
         .catch((error) => {
             res.status(400).render('main/404')
         })
-})
+});
 
-router.get('/new', (req, res) => {
-    res.render('conspiracy/new')
+
+
+
+router.get('/:id', async (req, res) => {
+    let findConspiracy = await db.conspiracy.findAll({
+        where: { id: req.params.id }
+    })
+    res.render('conspiracy/one', { conspiracies: findConspiracy })
 });
 
 router.get('/list/:id', (req, res) => {
@@ -41,7 +50,7 @@ router.get('/list/:id', (req, res) => {
         where: { userId: req.params.id }
     })
         .then((conspiracy) => {
-            res.render('conspiracy/show', {conspiracies: conspiracy})
+            res.render('conspiracy/show', { conspiracies: conspiracy })
             // res.send(conspiracy);
         })
         .catch((error => {
@@ -49,7 +58,17 @@ router.get('/list/:id', (req, res) => {
         }))
 });
 
+router.delete('/:id', async (req, res) => {
+    // get conspiracy and remove
 
+    let songsConpiracy = await db.conspiracy.destroy({
+        where: { id: req.params.id }
+    });
+    console.log('==== this is the delete route ======');
+    console.log('Amount of songs deleted', songsConpiracy);
+    // redirect the user back to all songs
+    res.redirect('/conspiracy');
+});
 
 
 module.exports = router
