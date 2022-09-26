@@ -68,7 +68,7 @@ router.put('/edit/:id', async (req, res, next) => {
         {
             where: { id: req.params.id }
         });
-        res.redirect(`/edit/${req.params.id}`)
+        res.redirect(`/conspiracy/${req.params.id}`)
 })
 
 

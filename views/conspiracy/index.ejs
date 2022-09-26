@@ -7,18 +7,18 @@
             </div>
         </div>
         <h2>Top Conspiracies!</h2>
-
         <% conspiracies.forEach((c => { %>
-            <div class="well">
-                <h2>
-                    <p><%= c.title %></p>
-                    <small>by <%= c.description %></small>
-                </h2>
-                <p>
-                    Rating:<%= c.rating %> 
-                </p>
-            </div>
+            <% if(c.isLive === true) { %> 
+                <div class="well">
+                    <h2>
+                        <p><%= c.title %></p>
+                        <small>by <%= c.description %></small>
+                    </h2>
+                    <p>
+                        Rating:<%= c.rating %> 
+                    </p>
+                </div>
+                <% } %> 
             <% })); %>
-
     </div>
 </div>
