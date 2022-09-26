@@ -12,10 +12,13 @@
         <p>
             <%= c.rating %>
         </p>
+        <p>
+            <%= c.id %> 
+        </p>
     </div>
     <form action="/conspiracy/edit/<%=c.id%>?_method=PUT" method="POST">
-        <input type="text" title="title" value="<%= c.title %> "> 
-        <input type="text" title="description" value="<%= c.description %>" > 
+        <input type="text" name="title" value="<%= c.title %> "> 
+        <input type="text" name="description" value="<%= c.description %>" > 
         <button type="submit">submit put example</button>
     </form>
     <% }); %>

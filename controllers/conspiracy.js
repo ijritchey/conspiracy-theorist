@@ -60,16 +60,20 @@ router.get('/list/:id', (req, res) => {
 
 
 router.put('/edit/:id', async (req, res, next) => {
-    db.conspiracy.update({
-        title: req.body.title,
-        description: req.body.description
-    },
-        {where: req.params.id}
-    )
-    .then(function(rowsUpdated) {
-        res.json(rowsUpdated)
-      })
-      .catch(next)
+    let updateConspiracy = await db.conspiracy.update({
+            title: req.body.title,
+            description: req.body.description
+        },
+        {
+            where: { id: req.params.id }
+        });
+        console.log('Amount of songs deleted', updateConspiracy);
+        res.redirect('/profile')
+        // .then((rowsUpdated) => {
+        //     res.json(rowsUpdated)
+
+        // })
+        // .catch(next)
 })
 
 
