@@ -62,18 +62,13 @@ router.get('/list/:id', (req, res) => {
 router.put('/edit/:id', async (req, res, next) => {
     let updateConspiracy = await db.conspiracy.update({
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
+            isLive: req.body.isLive
         },
         {
             where: { id: req.params.id }
         });
-        console.log('Amount of songs deleted', updateConspiracy);
-        res.redirect('/profile')
-        // .then((rowsUpdated) => {
-        //     res.json(rowsUpdated)
-
-        // })
-        // .catch(next)
+        res.redirect(`/edit/${req.params.id}`)
 })
 
 
@@ -84,8 +79,7 @@ router.delete('/:id', async (req, res) => {
         where: { id: req.params.id }
     });
     console.log('==== this is the delete route ======');
-    console.log('Amount of songs deleted', songsConpiracy);
-    // redirect the user back to all songs
+    // console.log('Amount of songs deleted', songsConpiracy);
     res.redirect('/conspiracy');
 });
 

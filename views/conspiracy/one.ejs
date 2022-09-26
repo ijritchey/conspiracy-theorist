@@ -1,24 +1,34 @@
- <%= console.log(conspiracies) %> 
+<h1>Selected Conspiracy</h1>
 
-<% conspiracies.forEach((c)=> { %>
-    <%= console.log(c) %> 
-    <div class="well">
-        <h3>
-            <%= c.title %>
-        </h3>
-        <p>
-            <%= c.description %>
-        </p>
-        <p>
-            <%= c.rating %>
-        </p>
-        <p>
-            <%= c.id %> 
-        </p>
-    </div>
-    <form action="/conspiracy/edit/<%=c.id%>?_method=PUT" method="POST">
-        <input type="text" name="title" value="<%= c.title %> "> 
-        <input type="text" name="description" value="<%= c.description %>" > 
-        <button type="submit">submit put example</button>
-    </form>
-    <% }); %>
+<%= console.log(conspiracies) %>
+
+    <% conspiracies.forEach((c)=> { %>
+            <div class="well">
+                <h3>
+                    <%= c.title %>
+                </h3>
+                <p>
+                    Description: <%= c.description %>
+                </p>
+                <p>
+                    Rating: <strong><%= c.rating %></strong> 
+                </p>
+                <p>
+                   Is this conspiracy public: <strong><%= c.isLive %></strong>
+                </p>
+            </div>
+            <div class="well">
+                <h2>Eidt your conspiracy</h2>
+                <form action="/conspiracy/edit/<%=c.id%>?_method=PUT" method="POST">
+                    <input type="text" name="title" value="<%= c.title %> ">
+                    <input type="text" name="description" value="<%= c.description %>">
+                    <h3>Make your conspiracy live for the community</h3>
+                    <input type="radio" id="ture" name="isLive" value=true>
+                    <label for="true">True</label><br>
+                    <input type="radio" id="false" name="isLive" value="false">
+                    <label for="flase">False</label><br> 
+                    <button type="submit">Update Conspiracy</button>
+                </form>
+            </div>
+            
+            <% }); %>
