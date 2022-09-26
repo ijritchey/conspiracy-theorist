@@ -58,6 +58,21 @@ router.get('/list/:id', (req, res) => {
         }))
 });
 
+
+router.put('/edit/:id', async (req, res, next) => {
+    db.conspiracy.update({
+        title: req.body.title,
+        description: req.body.description
+    },
+        {where: req.params.id}
+    )
+    .then(function(rowsUpdated) {
+        res.json(rowsUpdated)
+      })
+      .catch(next)
+})
+
+
 router.delete('/:id', async (req, res) => {
     // get conspiracy and remove
 

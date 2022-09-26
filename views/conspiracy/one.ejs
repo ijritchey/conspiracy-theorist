@@ -1,4 +1,7 @@
+ <%= console.log(conspiracies) %> 
+
 <% conspiracies.forEach((c)=> { %>
+    <%= console.log(c) %> 
     <div class="well">
         <h3>
             <%= c.title %>
@@ -10,4 +13,9 @@
             <%= c.rating %>
         </p>
     </div>
+    <form action="/conspiracy/edit/<%=c.id%>?_method=PUT" method="POST">
+        <input type="text" title="title" value="<%= c.title %> "> 
+        <input type="text" title="description" value="<%= c.description %>" > 
+        <button type="submit">submit put example</button>
+    </form>
     <% }); %>

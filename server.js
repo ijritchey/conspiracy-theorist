@@ -49,7 +49,7 @@ app.use((req, res, next) => {
 
 
 app.get('/', async (req, res) => {
-  axios.get(`https://gnews.io/api/v4/search?q=example&token=${API_TOKEN}`)
+  axios.get(`https://gnews.io/api/v4/top-headlines?lang=en&token=${API_TOKEN}`)
     .then(async response => {
       let conspiracies;
       if (req.user) {

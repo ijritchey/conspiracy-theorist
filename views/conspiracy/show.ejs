@@ -12,6 +12,13 @@
       <p>
         <%= c.rating %>
       </p>
+      <ul> Liked news stories:
+        <li>
+          <% c.resources.forEach((a)=> { %>
+            <a href= <%= a.url %> > <%= a.title %> </a> 
+        <%  }); %>
+        </li>
+      </ul>
     </div>
     <form method="POST" action="/conspiracy/<%= c.id %>/?_method=DELETE">
       <a type="button" class="btn btn-sm btn-outline-secondary" href="/conspiracy/<%= c.id %>">Views</a>
