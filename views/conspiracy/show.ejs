@@ -10,30 +10,33 @@
         <%= c.description %>
       </p>
       <p>
-        Conspiracy ratting: 
+        Conspiracy ratting:
         <strong>
           <%= c.rating %>
         </strong>
       </p>
       <p>
-        Is this conspiracy live: 
+        Is this conspiracy live:
         <strong>
           <%= c.isLive %>
         </strong>
       </p>
       <ul> Liked news stories:
-        <% if(c.resources.length > 0) {%>
+        <% if(c.resources.length> 0) {%>
           <% c.resources.forEach((a)=> { %>
             <li>
               <a href=<%=a.url %> > <%= a.title %> </a>
+              <form method="POST" action="/conspiracy/news/<%= a.id %>/?_method=DELETE">
+                <button type="submit" type="button" class="btn btn-sm btn-outline-secondary">Remove</button>
+              </form>
             </li>
             <% }) %>
-          <% } else { %>
+              <% } else { %>
                 <li>
                   <a href="/">Add resources</a>
                 </li>
-                <% }; %>
       </ul>
+      <% }; %>
     </div>
     <form method="POST" action="/conspiracy/<%= c.id %>/?_method=DELETE">
       <a type="button" class="btn btn-sm btn-outline-secondary" href="/conspiracy/<%= c.id %>">Edit</a>

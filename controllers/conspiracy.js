@@ -4,7 +4,11 @@ const db = require('../models');
 
 // conspiracy index get route
 router.get('/', (req, res) => {
-    db.conspiracy.findAll()
+    db.conspiracy.findAll({
+        order: [
+            ['id', 'DESC']
+        ]
+    })
         .then((conspiracy) => {
             res.render('conspiracy/index', { conspiracies: conspiracy })
         })
@@ -12,6 +16,8 @@ router.get('/', (req, res) => {
             res.status(400).render('main/404')
         }))
 });
+
+//create new conspiracy route
 
 router.get('/new', (req, res) => {
     res.render('conspiracy/new')
@@ -35,7 +41,7 @@ router.post('/', (req, res) => {
 });
 
 
-
+// conspiracy edit route
 
 router.get('/:id', async (req, res) => {
     let findConspiracy = await db.conspiracy.findAll({
@@ -43,6 +49,8 @@ router.get('/:id', async (req, res) => {
     })
     res.render('conspiracy/one', { conspiracies: findConspiracy })
 });
+
+// personal list of conspiracies route
 
 router.get('/list/:id', (req, res) => {
     db.conspiracy.findAll({
@@ -59,19 +67,43 @@ router.get('/list/:id', (req, res) => {
 });
 
 
-router.put('/edit/:id', async (req, res, next) => {
+// PUT upvote/downvote route
+router.put('/vote/:id', async (req, res) => {
+    const vote = req.body.vote;
+    if (vote === 'upvote') {
+        let upvoteConspiracy = await db.conspiracy.increment('rating', { by: 1, where: { id: `${req.params.id}` } })
+    } else {
+        let downvoteConspiracy = await db.conspiracy.increment('rating', { by: -1, where: { id: `${req.params.id}` } })
+    }
+    res.redirect('/conspiracy')
+});
+
+// PUT personal conspiracy update route
+router.put('/edit/:id', async (req, res) => {
     let updateConspiracy = await db.conspiracy.update({
-            title: req.body.title,
-            description: req.body.description,
-            isLive: req.body.isLive
-        },
+        title: req.body.title,
+        description: req.body.description,
+        isLive: req.body.isLive
+    },
         {
             where: { id: req.params.id }
         });
-        res.redirect(`/conspiracy/${req.params.id}`)
-})
+    res.redirect(`/conspiracy/${req.params.id}`)
+});
 
 
+router.delete('/news/:id', async (req, res) => {
+    // get conspiracy and remove
+
+    let songsConpiracy = await db.resource.destroy({
+        include: [db.user],
+        where: { id: req.params.id }
+    });
+    console.log('==== this is the delete route ======');
+    res.redirect('/conspiracy');
+});
+
+// 
 router.delete('/:id', async (req, res) => {
     // get conspiracy and remove
 
@@ -79,7 +111,6 @@ router.delete('/:id', async (req, res) => {
         where: { id: req.params.id }
     });
     console.log('==== this is the delete route ======');
-    // console.log('Amount of songs deleted', songsConpiracy);
     res.redirect('/conspiracy');
 });
 

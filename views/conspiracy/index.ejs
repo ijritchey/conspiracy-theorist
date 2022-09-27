@@ -2,23 +2,31 @@
     <div class="col-sm-8">
         <div class="row">
             <div class="col-xs-12">
-                <img class="hero"
-                    src="">
+                <img class="hero" src="">
             </div>
         </div>
         <h2>Top Conspiracies!</h2>
-        <% conspiracies.forEach((c => { %>
-            <% if(c.isLive === true) { %> 
+        <% conspiracies.forEach((c=> { %>
+            <% if(c.isLive===true) { %>
                 <div class="well">
                     <h2>
-                        <p><%= c.title %></p>
+                        <p>
+                            <%= c.title %>
+                        </p>
                         <small>by <%= c.description %></small>
                     </h2>
                     <p>
-                        Rating:<%= c.rating %> 
+                        Rating:<%= c.rating %>
                     </p>
+                    <% if(currentUser) { %>
+                        <form action="/conspiracy/vote/<%=c.id%> ?_method=PUT" method="POST">
+                            <h3>Your vote matters!</h3>
+                            <button type="submit" id="vote" name="vote" value="upvote">Upvote</button>
+                            <button type="submit" id="vote" name="vote" value="downvote">Downvote</button>
+                        </form>
+                        <% } %>
                 </div>
-                <% } %> 
-            <% })); %>
+                <% } %>
+                    <% })); %>
     </div>
 </div>
