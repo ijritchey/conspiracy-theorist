@@ -47,4 +47,26 @@ as follows: `API_TOKEN`.
 ![Conspiracy Theroiest Wireframe] ./images/
 
 ----------------------------------------------------------
-### 
+### Application Routes
+
+| Method | Path | Location | Purpose |
+| ------ | ---------------- | -------------- | ------------------- |
+| GET | / | server.js | Home page |
+| GET | /auth/login | auth.js | Login form |
+| GET | /auth/signup | auth.js | Signup form |
+| POST | /auth/login | auth.js | Login user |
+| POST | /auth/signup | auth.js | Creates user |
+| GET | /auth/logout | auth.js | Removes session info |
+| GET | /profile | server.js | Regular User Profile |
+| GET | /conspiracy/ | conspiracy.js | Top conspiracies | 
+| GET | /conspiracy/new | conspiracy.js | New conspiracy form |
+| POST | /conspiracy | conspiracy.js | Create conspiracy |
+| GET | /conspiracy/:id | conspiracy.js | Edit conspiracy |
+| GET | /conspiracy/list/:id | conspiracy.js | User's Conspiracies |
+| PUT | /conspiracy/vote/:id | conspiracy.js | Top concpiracy vote up or down | 
+| PUT | /conspiracy/edit/:id | conspiracy.js | Edit user conspiracy | 
+| DELETE | /conspiracy/news/:id | conspiracy.js | Delete news resources pinned to conspiracies |
+| DELETE | /conspiracy/:id | conspiracy.js | Delete conspiracies |
+| POST | /news | news.js | Create news resource |
+
+----------------------------------------------------------
