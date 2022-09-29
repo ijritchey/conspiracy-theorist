@@ -13,11 +13,8 @@ Do your own research!
 npm install
 ```
 
-`3` We need to install some packages that will be used for `authentication`. Those are the following packages:
+Here area  couple of the packages that we'll be using for this project:
 
-```text
-npm install bcryptjs connect-flash passport passport-local express-session method-override
-```
 -  [bcryptjs](https://www.npmjs.com/package/bcryptjs): A library to help you hash passwords. ( [wikipedia](https://en.wikipedia.org/wiki/Bcrypt) ) 
     - Blowfish has a 64-bit block size and a variable key length from 32 bits up to 448 bits.
 - [connect-flash](https://github.com/jaredhanson/connect-flash): The flash is an area of the session used for storing messages that will be used to to display to the user. Flash is typically used with redirects.
