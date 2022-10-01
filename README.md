@@ -27,6 +27,18 @@ You'll want to create a `.env` file and create a varible for your API key, which
 this website: https://gnews.io/docs/v4?javascript#introduction (free account registration). That varible should be
 as follows: `API_TOKEN`. 
 
+SECRET_SESSION=yaaaaaaayayyyyyayyayay
+
+create a database
+`npm install sequelize-cl`
+`npx sequelize-cli db:create supreme-engine`
+
+migrate their database
+`npx sequelize-cli db:migrate`
+
+Start the server
+`npm start`
+
 
 ----------------------------------------------------------
 ### ERD
