@@ -41,7 +41,8 @@ as follows: `API_TOKEN`.
 4. As a user, I want to see my news favorites on of my dashboard so that I can track new stories I'm intersted in
 ----------------------------------------------------------
 ### Wireframes 
-![Conspiracy Theroiest Wireframe] ./images/
+
+<img width="835" alt="Screen Shot 2022-09-24 at 10 11 23 AM" src="https://user-images.githubusercontent.com/39060344/193418993-5c65d86c-c125-43fd-82ac-0fa2d0b69f27.png">
 
 ----------------------------------------------------------
 ### Application Routes
